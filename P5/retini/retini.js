@@ -1,74 +1,79 @@
-/*
-  P5 Codepen Base Template
- *
-*/
+// setup colors
+var chiaro
+var scuro
 
-var t = 1
-var line_num = 60
+//setup space
+var lg_diam
+var lg_rad
+var a //atan
 
-function setup() {
+var starRadius
+
+function setup(){
   createCanvas(windowWidth, windowHeight)
-  background(200)
-  colorMode(RGB, line_num, 255, 255, 255 )
-  //frameRate(100)
+  noStroke()
+  myrandom()
+}
+
+function draw(){
+  a = atan2(pmouseY-height/2, pmouseX-width/2)
+  chiaro = map(mouseX, width/2, width/2, 25, 250)
+  scuro = map (mouseX, 0, width/2, width/2, 250, 25)
+  lg_diam = width +100
+  lg_rad = lg_diam / 2
+
+  background(scuro)
+  fill(chiaro)
+  rotateCerchio()
+
+  console.log("mysize: "+ mysize + " ,distance: "+ distance + " ,poligono: "+ poligono + " ,divisor: "+ divisor)
+
 }
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight)
 }
 
-
-function draw() {
-  background(20)
+function rotateCerchio(){
   translate(width/2, height/2)
- 
-  for(var i= 1; i < 8; i++){
-    rotate(PI/2)
-    stroke(i*8, 230, 180, 30)
-    spicchio(t)
-    noStroke()
-    fill(i, 230, 230, 255)
-    ellipse(pos_X1(t/10), i*10, i*1.618)
-    ellipse(pos_X1(t/20), i*10, i)
+  cerchio_01(a)
+  cerchio_01(-a)
+}
+
+// star pattern star(x, y, radius1, radius2, npoints)
+function cerchio_01(rotation){
+  push()
+  rotate(rotation)
+  for (var x = -lg_rad; x <= lg_diam; x+=distance) {
+    for (var y = -lg_rad; y <= lg_diam; y+=distance) {
+      star(x, y, mysize, divisor, poligono)
+    }
   }
-  
-  t = t+0.05
+  pop()
 }
 
-function pos_X1(t){
-  return sin(t/10)*200 + cos(t/10)*100
-}
-
-function pos_Y1(t){
-  return sin(t/10)*100 + sin(-t/50)*150
-}
-
-function pos_X2(t){
-  return sin(t/50)*100 + tan(t/100)*50
-}
-
-function pos_Y2(t){
-  return sin(t/10)*50 + sin(t/50)*150
-}
-
-function spicchio(t){
-    for(var i=1; i<line_num; i++){
-    strokeWeight(1)
-    line(pos_X1(t+i), pos_Y1(t+i), pos_X2(t+i), pos_Y2(t+i))
+function star(x, y, radius1, radius2, npoints) {
+  var angle = TWO_PI / npoints;
+  var halfAngle = angle/2.0;
+  beginShape();
+  for (var a = 0; a < TWO_PI; a += angle) {
+    var sx = x + cos(a) * radius2;
+    var sy = y + sin(a) * radius2;
+    vertex(sx, sy);
+    sx = x + cos(a+halfAngle) * radius1;
+    sy = y + sin(a+halfAngle) * radius1;
+    vertex(sx, sy);
   }
+  endShape(CLOSE);
 }
-/*
-_=r"""             )_(tnirp
-gro.elituniecidoc #      ""
-""                       ""
-""                       ""
-        )]1-::[_+_%      ""
-""\"\"\s%"\"\"\r=_"      ""
-""      (=_;""";_=(      ""
-""      "_=r\"\"\"%s\"\"\""
-""      %_+_[::-1])        
-""                       ""
-""                       ""
-""      # codiceinutile.org
-print(_)    
-*/
+
+function mousePressed() {
+  myrandom()
+}
+
+function myrandom(){
+  mysize = int(random(21,89))
+  distance = int(random(mysize*1.618, mysize*3))
+  poligono = int(random(2,8))
+  divisor = random(mysize*1.618,  mysize/distance)
+}
