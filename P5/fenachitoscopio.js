@@ -21,7 +21,7 @@ function setup(){
   createCanvas(windowWidth, windowHeight, WEBGL);
   lg_diam = windowHeight-100;
   lg_rad = lg_diam / 2;
-  frameRate(100);
+  /*frameRate(100);*/
 }
 
 function draw(){
@@ -66,11 +66,11 @@ function cerchione_01(){
       var exi = i;
       push();
       translate(x-width/2, y-height/2, lg_diam+pallino);
-      sphere(pallino/2); 
+      sphere(pallino/2);
       pop();
       push();
       translate(x-width/2, y-height/2, -lg_diam*2*i/2);
-      sphere(pallino); 
+      sphere(pallino);
       pop();
       stroke(100);
       line(x-width/2, y-height/2, -lg_diam*2*i/2, x-width/2, y-height/2, lg_diam+pallino);
@@ -101,7 +101,7 @@ function cerchione_01(){
 
 function keyPress() {
   if(key==="A"){
-    rotateZ(frameCount*3);    
+    rotateZ(frameCount*3);
   } else {
     rotateZ(0);
   }
@@ -110,11 +110,11 @@ function keyPress() {
 /*function keyPress() {
   if (on) {
     if(key==="A"){
-      rotateZ(0);    
+      rotateZ(0);
     }
   } else {
     if(key==="A"){
-      rotateZ(frameCount*3);    
+      rotateZ(frameCount*3);
     }
   }
   on = !on;
