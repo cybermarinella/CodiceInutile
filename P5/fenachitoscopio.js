@@ -73,7 +73,7 @@ function cerchione_01(){
       sphere(pallino);
       pop();
       stroke(100);
-      line(x-width/2, y-height/2, -lg_diam*2*i/2, x-width/2, y-height/2, lg_diam+pallino);
+      line(x-width/2, y-height/2, -lg_diam*i/2, x-width/2, y-height/2, lg_diam+pallino);
       push();
       translate(x-width/2, y-height/2, lg_rad);
       push();
