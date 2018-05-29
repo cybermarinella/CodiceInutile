@@ -22,8 +22,8 @@ function draw(){
   lg_diam = width +100
   lg_rad = lg_diam / 2
 
-  background(scuro)
-  fill(chiaro)
+  background(250)
+  fill(25)
   rotateCerchio()
 
   console.log("mysize: "+ mysize + " ,distance: "+ distance + " ,poligono: "+ poligono + " ,divisor: "+ divisor)
