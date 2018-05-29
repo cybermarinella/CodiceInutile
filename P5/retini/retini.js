@@ -22,8 +22,8 @@ function draw(){
   lg_rad = lg_diam / 2
   background(scuro)
   fill(chiaro)
-  
   rotateCerchio()
+  console.log(chiaro + " - " + scuro)
 }
 
 function windowResized() {
