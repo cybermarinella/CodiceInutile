@@ -16,8 +16,8 @@ createCanvas(windowWidth, windowHeight)
 
 function draw(){
   a = atan2(pmouseY-height/2, pmouseX-width/2)
-  chiaro = map(mouseX, width/2, width/2, 25, 250)
-  scuro = map (mouseX, 0, width/2, width/2, 250, 25)
+  chiaro = map(mouseX, width, 0, 25, 250)
+  scuro = map (mouseX, width, 0, 250, 25)
   lg_diam = width +100
   lg_rad = lg_diam / 2
   background(scuro)
