@@ -19,7 +19,7 @@ var bgColor = 20
 
 function setup(){
   createCanvas(windowWidth, windowHeight, WEBGL);
-  lg_diam = windowHeight-100;
+  lg_diam = windowHeight;
   lg_rad = lg_diam / 2;
   /*frameRate(100);*/
 }
@@ -30,7 +30,7 @@ function draw(){
   chiaro = map(mouseX, width/2-lg_rad/2, width/2+lg_rad/2, 0, height);
   scuro = color(mouseY, height-mouseX/2, height/1.618);
   riempimento =  color(mouseY, height-mouseX/2, height/1.618);
-  camera(0, 0, lg_diam-200);
+  camera(0, 0, lg_diam);
   noStroke();
   fill(100);
   fill(bgColor);
@@ -120,6 +120,3 @@ function keyPress() {
   on = !on;
   //console.log(on);
 }*/
-
-
-//https://github.com/processing/p5.js/wiki/Getting-started-with-WebGL-in-p5
