@@ -21,7 +21,6 @@ function setup(){
   createCanvas(windowWidth, windowHeight, WEBGL);
   lg_diam = windowHeight;
   lg_rad = lg_diam / 2;
-  /*frameRate(100);*/
 }
 
 function draw(){
@@ -30,7 +29,7 @@ function draw(){
   chiaro = map(mouseX, width/2-lg_rad/2, width/2+lg_rad/2, 0, height);
   scuro = color(mouseY, height-mouseX/2, height/1.618);
   riempimento =  color(mouseY, height-mouseX/2, height/1.618);
-  camera(0, 0, lg_diam);
+  camera(0, 0, lg_diam*1.618);
   noStroke();
   fill(100);
   fill(bgColor);
